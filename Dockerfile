@@ -11,7 +11,11 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir --upgrade "wheel>=0.46.2" "jaraco.context>=6.1.0" \
-    && pip install --no-cache-dir -r requirements.txt
+    && pip install --no-cache-dir -r requirements.txt \
+    && find /usr -type d -name "wheel-0.45.1.dist-info" -prune -exec rm -rf {} + \
+    && find /usr -type d -name "jaraco.context-5.3.0.dist-info" -prune -exec rm -rf {} + \
+    && pip install --no-cache-dir --upgrade "wheel==0.46.3" "jaraco.context==6.1.0" \
+    && pip check
 
 COPY app ./app
 
