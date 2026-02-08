@@ -2,3 +2,6 @@ pytest==8.3.2
 httpx==0.27.2
 bandit==1.7.9
 pip-audit==2.7.3
+wheel==0.46.3
+jaraco.context==6.1.0
+urllib3==2.6.3
